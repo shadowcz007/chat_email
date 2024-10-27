@@ -10,11 +10,12 @@ import ScrollArea from './components/ui/ScrollArea'
 
 // 更新fetchEmails函数，调用真实的API接口
 const fetchEmails = async (email: string, password: string) => {
-  const response = await fetch('/api/get_my_email', {
-    method: 'GET',
+  const response = await fetch('/api/login', {
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
+    body: JSON.stringify({ email, password }),
   });
 
   if (!response.ok) {
