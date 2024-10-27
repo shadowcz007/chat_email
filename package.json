@@ -1,0 +1,16 @@
+{
+  "name": "chat_email",
+  "version": "1.0.0",
+  "description": "A project for processing emails using Node.js",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "node-imap": "0.9.6",
+    "mailparser": "^3.3.0",
+    "dotenv": "^10.0.0"
+  },
+  "author": "",
+  "license": "ISC"
+}
