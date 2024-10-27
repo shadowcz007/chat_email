@@ -1,29 +1,36 @@
-# Chat Email Project
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-This project is designed to process emails using Node.js. It connects to an IMAP server, fetches unseen emails, and parses them.
+## Getting Started
 
-## Installation
+First, run the development server:
 
-1. Clone the repository:
-   ```sh
-   git clone https://github.com/your-username/chat_email.git
-   cd chat_email
-   ```
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-2. Install dependencies:
-   ```sh
-   npm install
-   ```
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Usage
+You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
-1. Update the email configuration in `index.js` with your email credentials and IMAP server details.
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-2. Start the project:
-   ```sh
-   npm start
-   ```
+## Learn More
 
-## License
+To learn more about Next.js, take a look at the following resources:
 
-This project is licensed under the ISC License.
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
