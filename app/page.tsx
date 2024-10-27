@@ -8,25 +8,21 @@ import Label from './components/ui/Label'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './components/ui/Card'
 import ScrollArea from './components/ui/ScrollArea'
 
-// 模拟API调用的函数，用于获取邮件列表
-// 在实际应用中，这个函数会被替换为真实的API调用
+// 更新fetchEmails函数，调用真实的API接口
 const fetchEmails = async (email: string, password: string) => {
-  // 使用Promise和setTimeout来模拟网络请求的延迟
-  await new Promise(resolve => setTimeout(resolve, 1000))
-  
-  // 返回一个模拟的邮件列表
-  return [
-    { id: 1, subject: "欢迎使用新邮箱系统" },
-    { id: 2, subject: "您的账单已到期" },
-    { id: 3, subject: "新产品发布通知" },
-    { id: 4, subject: "周末特惠活动" },
-    { id: 5, subject: "安全警告：请更新您的密码" },
-    { id: 6, subject: "您的订阅即将到期" },
-    { id: 7, subject: "新的工作机会" },
-    { id: 8, subject: "系统维护通知" },
-    { id: 9, subject: "您的包裹已发货" },
-    { id: 10, subject: "重要：账户安全信息" },
-  ]
+  const response = await fetch('/api/get_my_email', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to fetch emails');
+  }
+
+  const emails = await response.json();
+  return emails;
 }
 
 // 定义并导出主要的React组件
@@ -71,16 +67,16 @@ export default function Component() {
     <div className="container mx-auto p-4">
       {/* 登录表单卡片 */}
       <Card className="w-full max-w-md mx-auto mb-8">
-        <CardHeader>
-          <CardTitle>邮箱登录</CardTitle>
-          <CardDescription>请输入您的邮箱地址和密码</CardDescription>
+        <CardHeader className="card-header">
+          <CardTitle className="card-title">邮箱登录</CardTitle>
+          <CardDescription className="card-description">请输入您的邮箱地址和密码</CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent className="card-content">
           {/* 登录表单 */}
           <form onSubmit={handleSubmit} className="space-y-4">
             {/* 邮箱输入框 */}
             <div className="space-y-2">
-              <Label htmlFor="email">邮箱地址</Label>
+              <Label htmlFor="email" className="label">邮箱地址</Label>
               <Input
                 id="email"
                 type="email"
@@ -88,17 +84,19 @@ export default function Component() {
                 value={email}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
                 required
+                className="input"
               />
             </div>
             {/* 密码输入框 */}
             <div className="space-y-2">
-              <Label htmlFor="password">密码</Label>
+              <Label htmlFor="password" className="label">密码</Label>
               <Input
                 id="password"
                 type="password"
                 value={password}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
                 required
+                className="input"
               />
             </div>
             {/* 登录按钮 */}
@@ -112,7 +110,7 @@ export default function Component() {
       {/* 错误信息显示 */}
       {error && (
         <Card className="w-full max-w-md mx-auto mb-8">
-          <CardContent>
+          <CardContent className="card-content">
             <p className="text-red-500">{error}</p>
           </CardContent>
         </Card>
@@ -121,11 +119,11 @@ export default function Component() {
       {/* 邮件列表显示 */}
       {emails.length > 0 && (
         <Card className="w-full max-w-md mx-auto">
-          <CardHeader>
-            <CardTitle>邮件列表</CardTitle>
-            <CardDescription>您有 {emails.length} 封未读邮件</CardDescription>
+          <CardHeader className="card-header">
+            <CardTitle className="card-title">邮件列表</CardTitle>
+            <CardDescription className="card-description">您有 {emails.length} 封未读邮件</CardDescription>
           </CardHeader>
-          <CardContent>
+          <CardContent className="card-content">
             {/* 使用ScrollArea组件创建可滚动的区域 */}
             <ScrollArea className="h-[300px] w-full rounded-md border p-4">
               {/* 邮件列表 */}
